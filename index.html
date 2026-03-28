@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WhatsApp Contact</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #007BFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+  }
+
+  .box {
+    text-align: center;
+  }
+
+  /* QR Code */
+  .qr {
+    width: 180px;
+    height: 180px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    width: 140px;
+    height: 140px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #25D366;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #1ebe5d;
+  }
+
+  /* دکمه بالا */
+  .welcome-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    padding: 10px 20px;
+    background-color: yellow;
+    color: black;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    z-index: 1000;
+  }
+
+  /* بنر زیر دکمه */
+  .banner {
+    position: fixed;
+    top: 60px;
+    right: 15px;
+    background-color: black;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    display: none;
+  }
+
+  .banner.show {
+    display: block;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- دکمه بالا -->
+<button class="welcome-btn" onclick="showBanner()">
+  Welcome
+</button>
+
+<!-- بنر -->
+<div class="banner" id="banner">
+  This site is for buying USDT
+</div>
+
+<div class="box">
+
+  <!-- QR Code بالا -->
+  <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://omersabori8-ui.github.io/fariden/" alt="QR Code">
+
+  <!-- لوگوی واتساپ -->
+  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+
+  <!-- دکمه واتساپ -->
+  <a class="btn" href="https://wa.me/916391628607" target="_blank">
+    Click in WhatsApp
+  </a>
+
+</div>
+
+<script>
+function showBanner() {
+  document.getElementById("banner").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>
