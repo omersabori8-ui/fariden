@@ -13,7 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     height: 100vh;
   }
 
@@ -23,7 +23,6 @@
     font-weight: bold;
   }
 
-  /* منو */
   .menu {
     position: absolute;
     top: 10px;
@@ -58,6 +57,7 @@
     background: #FFD700;
     padding: 20px;
     border-radius: 20px;
+    margin-top: 10px;
   }
 
   #display {
@@ -95,29 +95,30 @@
     grid-column: span 2;
     background: orange;
   }
+
+  /* QR پایین صفحه */
+  .qr {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .qr img {
+    width: 140px;
+    border-radius: 10px;
+  }
 </style>
 </head>
 
 <body>
 
-<!-- منو -->
 <div class="menu">
   <div class="menu-btn" onclick="toggleMenu()">☰ خوش آمدید</div>
   <div class="menu-box" id="menuBox">
-    این ویپ سایت از سیر جان فرخاری میباشد و شما میتانین از این  ویپ سایت استفاده کنین
+    این ویپ سایت از سیر جان فرخاری میباشد و شما میتانین از این ویپ سایت استفاده کنین
   </div>
 </div>
 
-
-
-
-  
-<h1> <h1/>
-
-
-  
-
-  <h1>سیر جان - فرخاری</h1>
+<h1>سیر جان - فرخاری</h1>
 <h1>🇦🇫</h1>
 
 <div class="whatsapp-top">
@@ -155,6 +156,12 @@
   </div>
 </div>
 
+<!-- QR CODE پایین صفحه -->
+<div class="qr">
+  <p style="color:#FFD700;">اسکن کن برای باز شدن سایت</p>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=https://YOUR-SITE-LINK">
+</div>
+
 <script>
   function add(val) {
     document.getElementById('display').value += val;
@@ -181,11 +188,7 @@
 
   function toggleMenu() {
     let menu = document.getElementById('menuBox');
-    if (menu.style.display === "block") {
-      menu.style.display = "none";
-    } else {
-      menu.style.display = "block";
-    }
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
   }
 </script>
 
