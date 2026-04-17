@@ -23,6 +23,32 @@
     font-weight: bold;
   }
 
+  /* منو */
+  .menu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  .menu-btn {
+    background: rgb(28, 83, 70);
+    color: #f9d805;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .menu-box {
+    display: none;
+    margin-top: 5px;
+    background: rgb(217, 190, 190);
+    color: #000000;
+    padding: 15px;
+    border-radius: 10px;
+    width: 220px;
+  }
+
   .whatsapp-top img {
     width: 100px;
     cursor: pointer;
@@ -62,7 +88,7 @@
 
   .clear {
     grid-column: span 2;
-    background: red;
+    background: rgb(74, 95, 123);
   }
 
   .back {
@@ -74,8 +100,16 @@
 
 <body>
 
-<h1>سیر جان - فرخاری </h1>
-  <h1>🇦🇫 </h1>
+<!-- منو -->
+<div class="menu">
+  <div class="menu-btn" onclick="toggleMenu()">☰ خوش آمدید</div>
+  <div class="menu-box" id="menuBox">
+    این ویپ سایت از سیر جان فرخاری میباشد و شما میتانین از این استفاده کنین
+  </div>
+</div>
+
+<h1>سیر جان - فرخاری</h1>
+<h1>🇦🇫</h1>
 
 <div class="whatsapp-top">
   <a href="https://wa.me/93705567538" target="_blank">
@@ -107,7 +141,6 @@
     <button onclick="result()">=</button>
     <button onclick="add('+')">+</button>
 
-    <!-- دکمه‌ها جدید -->
     <button class="back" onclick="backspace()">⌫ پاک یک‌یک</button>
     <button class="clear" onclick="clearDisplay()">C پاک همه</button>
   </div>
@@ -134,6 +167,15 @@
       document.getElementById('display').value = res;
     } catch (e) {
       alert('اشتباه است');
+    }
+  }
+
+  function toggleMenu() {
+    let menu = document.getElementById('menuBox');
+    if (menu.style.display === "block") {
+      menu.style.display = "none";
+    } else {
+      menu.style.display = "block";
     }
   }
 </script>
