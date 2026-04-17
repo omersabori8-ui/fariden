@@ -15,6 +15,7 @@
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
+    transition: 0.4s;
   }
 
   h1 {
@@ -23,10 +24,40 @@
     font-weight: bold;
   }
 
+  /* DARK MODE */
+  body.dark {
+    background-color: #111;
+  }
+
+  body.dark .calculator {
+    background: #333;
+  }
+
+  body.dark button {
+    background: #555;
+  }
+
+  body.dark .menu-box {
+    background: #222;
+    color: white;
+  }
+
+  body.dark h1 {
+    color: #FFD700;
+  }
+
+  /* منو چپ */
   .menu {
     position: absolute;
     top: 10px;
     left: 10px;
+  }
+
+  /* تنظیمات راست */
+  .settings {
+    position: absolute;
+    top: 10px;
+    right: 10px;
   }
 
   .menu-btn {
@@ -96,7 +127,6 @@
     background: orange;
   }
 
-  /* QR پایین صفحه */
   .qr {
     margin-top: 20px;
     text-align: center;
@@ -111,17 +141,26 @@
 
 <body>
 
+<!-- منو چپ -->
 <div class="menu">
   <div class="menu-btn" onclick="toggleMenu()">☰ خوش آمدید</div>
   <div class="menu-box" id="menuBox">
-    این ویپ سایت از سیر فرخاری میباشد و شما میتانین از این ویپ سایت استفاده کنین
+    این ویپ سایت از سیر جان فرخاری میباشد
   </div>
 </div>
 
+<!-- تنظیمات راست -->
+<div class="settings">
+  <div class="menu-btn" onclick="toggleSettings()">⚙ تنظیمات</div>
+  <div class="menu-box" id="settingsBox">
+    <label>
+      <input type="checkbox" onchange="toggleDark(this)">
+      حالت شب
+    </label>
+  </div>
+</div>
 
-  <h1><h1/>
-
-<h1>سیر  - فرخاری</h1>
+<h1>سیر جان - فرخاری</h1>
 <h1>🇦🇫</h1>
 
 <div class="whatsapp-top">
@@ -159,7 +198,6 @@
   </div>
 </div>
 
-<!-- QR CODE پایین صفحه -->
 <div class="qr">
   <p style="color:#FFD700;">اسکن کن برای باز شدن سایت</p>
   <img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=https://YOUR-SITE-LINK">
@@ -190,8 +228,17 @@
   }
 
   function toggleMenu() {
-    let menu = document.getElementById('menuBox');
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    let m = document.getElementById('menuBox');
+    m.style.display = (m.style.display === "block") ? "none" : "block";
+  }
+
+  function toggleSettings() {
+    let s = document.getElementById('settingsBox');
+    s.style.display = (s.style.display === "block") ? "none" : "block";
+  }
+
+  function toggleDark(el) {
+    document.body.classList.toggle("dark", el.checked);
   }
 </script>
 
