@@ -2,12 +2,13 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سیر جان - ماشین حساب</title>
 <style>
   body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #007BFF; /* آبی */
+    background-color: #007BFF;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,59 +17,51 @@
   }
 
   h1 {
-    color: white;
-    margin-top: 20px;
+    color: #FFD700;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .whatsapp-top img {
+    width: 100px;
+    cursor: pointer;
   }
 
   .calculator {
-    background: white;
+    background: #FFD700;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border-radius: 20px;
   }
 
   #display {
     width: 100%;
-    height: 50px;
-    font-size: 20px;
+    height: 60px;
+    font-size: 22px;
     margin-bottom: 10px;
     text-align: right;
     padding: 10px;
+    color: black;
   }
 
   .buttons {
     display: grid;
-    grid-template-columns: repeat(4, 60px);
+    grid-template-columns: repeat(4, 70px);
     gap: 10px;
   }
 
   button {
-    padding: 15px;
+    padding: 18px;
     font-size: 18px;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    background: #f0f0f0;
-  }
-
-  button:hover {
-    background: #ddd;
-  }
-
-  .whatsapp {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .whatsapp img {
-    width: 60px;
-    cursor: pointer;
-  }
-
-  .whatsapp p {
+    background: black;
     color: white;
-    margin-top: 5px;
-    font-size: 16px;
+  }
+
+  .clear {
+    grid-column: span 4;
+    background: red;
   }
 </style>
 </head>
@@ -76,55 +69,56 @@
 
 <h1>سیر جان</h1>
 
+<div class="whatsapp-top">
+  <a href="https://wa.me/93705567538" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+  </a>
+</div>
+
 <div class="calculator">
-  <input type="text" id="display" disabled>
+  <input type="text" id="display" readonly>
 
   <div class="buttons">
-    <button onclick="append('7')">7</button>
-    <button onclick="append('8')">8</button>
-    <button onclick="append('9')">9</button>
-    <button onclick="append('/')">÷</button>
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button onclick="add('/')">÷</button>
 
-    <button onclick="append('4')">4</button>
-    <button onclick="append('5')">5</button>
-    <button onclick="append('6')">6</button>
-    <button onclick="append('*')">×</button>
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button onclick="add('*')">×</button>
 
-    <button onclick="append('1')">1</button>
-    <button onclick="append('2')">2</button>
-    <button onclick="append('3')">3</button>
-    <button onclick="append('-')">-</button>
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button onclick="add('-')">-</button>
 
-    <button onclick="append('0')">0</button>
-    <button onclick="append('.')">.</button>
-    <button onclick="calculate()">=</button>
-    <button onclick="append('+')">+</button>
+    <button onclick="add('0')">0</button>
+    <button onclick="add('.')">.</button>
+    <button onclick="result()">=</button>
+    <button onclick="add('+')">+</button>
 
-    <button onclick="clearDisplay()" style="grid-column: span 4; background:#ff4d4d; color:white;">C</button>
+    <button class="clear" onclick="clearDisplay()">C</button>
   </div>
 </div>
 
-<div class="whatsapp">
-  <a href="https://wa.me/93705567538" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
-  <p>کلیک وتساپ</p>
-</div>
-
 <script>
-  function append(value) {
-    document.getElementById('display').value += value;
+  function add(val) {
+    document.getElementById('display').value += val;
   }
 
   function clearDisplay() {
     document.getElementById('display').value = '';
   }
 
-  function calculate() {
+  function result() {
     try {
-      document.getElementById('display').value = eval(document.getElementById('display').value);
-    } catch {
-      alert('خطا');
+      let exp = document.getElementById('display').value;
+      let res = eval(exp);
+      document.getElementById('display').value = res;
+    } catch (e) {
+      alert('اشتباه است');
     }
   }
 </script>
