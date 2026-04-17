@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سیر جان - ماشین حساب</title>
+
 <style>
   body {
     margin: 0;
@@ -60,16 +61,21 @@
   }
 
   .clear {
-    grid-column: span 4;
+    grid-column: span 2;
     background: red;
+  }
+
+  .back {
+    grid-column: span 2;
+    background: orange;
   }
 </style>
 </head>
+
 <body>
 
-<h1>  سیر جان - فرخاری </h1>
-<h1>  🇦🇫 </h1>
-
+<h1>سیر جان - فرخاری </h1>
+  <h1>🇦🇫 </h1>
 
 <div class="whatsapp-top">
   <a href="https://wa.me/93705567538" target="_blank">
@@ -101,7 +107,9 @@
     <button onclick="result()">=</button>
     <button onclick="add('+')">+</button>
 
-    <button class="clear" onclick="clearDisplay()">C</button>
+    <!-- دکمه‌ها جدید -->
+    <button class="back" onclick="backspace()">⌫ پاک یک‌یک</button>
+    <button class="clear" onclick="clearDisplay()">C پاک همه</button>
   </div>
 </div>
 
@@ -112,6 +120,11 @@
 
   function clearDisplay() {
     document.getElementById('display').value = '';
+  }
+
+  function backspace() {
+    let display = document.getElementById('display');
+    display.value = display.value.slice(0, -1);
   }
 
   function result() {
