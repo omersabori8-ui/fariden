@@ -13,9 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    height: 100vh;
-    transition: 0.4s;
+    min-height: 100vh;
   }
 
   h1 {
@@ -24,36 +22,12 @@
     font-weight: bold;
   }
 
-  /* DARK MODE */
-  body.dark {
-    background-color: #111;
-  }
-
-  body.dark .calculator {
-    background: #333;
-  }
-
-  body.dark button {
-    background: #555;
-  }
-
-  body.dark .menu-box {
-    background: #222;
-    color: white;
-  }
-
-  body.dark h1 {
-    color: #FFD700;
-  }
-
-  /* منو چپ */
   .menu {
     position: absolute;
     top: 10px;
     left: 10px;
   }
 
-  /* تنظیمات راست */
   .settings {
     position: absolute;
     top: 10px;
@@ -73,15 +47,10 @@
     display: none;
     margin-top: 5px;
     background: rgb(217, 190, 190);
-    color: #000000;
+    color: black;
     padding: 15px;
     border-radius: 10px;
     width: 220px;
-  }
-
-  .whatsapp-top img {
-    width: 100px;
-    cursor: pointer;
   }
 
   .calculator {
@@ -98,7 +67,6 @@
     margin-bottom: 10px;
     text-align: right;
     padding: 10px;
-    color: black;
   }
 
   .buttons {
@@ -133,7 +101,7 @@
   }
 
   .qr img {
-    width: 140px;
+    width: 170px;
     border-radius: 10px;
   }
 </style>
@@ -141,15 +109,13 @@
 
 <body>
 
-<!-- منو چپ -->
 <div class="menu">
   <div class="menu-btn" onclick="toggleMenu()">☰ خوش آمدید</div>
   <div class="menu-box" id="menuBox">
-      این ویپ سایت از سیر - فرخاری میباشه و شما میتانین از ویپ سایت سیر -فرخاری استفاده کنین 
+    این ویب‌سایت از سیر - فرخاری میباشد
   </div>
 </div>
 
-<!-- تنظیمات راست -->
 <div class="settings">
   <div class="menu-btn" onclick="toggleSettings()">⚙ تنظیمات</div>
   <div class="menu-box" id="settingsBox">
@@ -159,21 +125,10 @@
     </label>
   </div>
 </div>
-
-
-
-  <h1>   <h1/>
-
-
-    
-<h1>سیر جان - فرخاری</h1>
-<h1>🇦🇫</h1>
-
-<div class="whatsapp-top">
-  <a href="https://wa.me/93705567538" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-  </a>
-</div>
+  
+<h1>     <h1/>
+  
+<h1>سیر  - فرخاری 🇦🇫</h1>
 
 <div class="calculator">
   <input type="text" id="display" readonly>
@@ -204,46 +159,39 @@
   </div>
 </div>
 
+<!-- QR CODE FIXED -->
 <div class="qr">
   <p style="color:#FFD700;">اسکن کن برای باز شدن سایت</p>
-  <img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=https://YOUR-SITE-LINK">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=170x170&data=https://omersabori8-ui.github.io/fariden/">
 </div>
 
 <script>
-  function add(val) {
-    document.getElementById('display').value += val;
+  function add(v){ document.getElementById("display").value += v; }
+  function clearDisplay(){ document.getElementById("display").value = ""; }
+  function backspace(){
+    let d = document.getElementById("display");
+    d.value = d.value.slice(0,-1);
   }
 
-  function clearDisplay() {
-    document.getElementById('display').value = '';
-  }
-
-  function backspace() {
-    let display = document.getElementById('display');
-    display.value = display.value.slice(0, -1);
-  }
-
-  function result() {
-    try {
-      let exp = document.getElementById('display').value;
-      let res = eval(exp);
-      document.getElementById('display').value = res;
-    } catch (e) {
-      alert('اشتباه است');
+  function result(){
+    try{
+      document.getElementById("display").value = eval(document.getElementById("display").value);
+    }catch{
+      alert("اشتباه است");
     }
   }
 
-  function toggleMenu() {
-    let m = document.getElementById('menuBox');
-    m.style.display = (m.style.display === "block") ? "none" : "block";
+  function toggleMenu(){
+    let m = document.getElementById("menuBox");
+    m.style.display = (m.style.display==="block")?"none":"block";
   }
 
-  function toggleSettings() {
-    let s = document.getElementById('settingsBox');
-    s.style.display = (s.style.display === "block") ? "none" : "block";
+  function toggleSettings(){
+    let s = document.getElementById("settingsBox");
+    s.style.display = (s.style.display==="block")?"none":"block";
   }
 
-  function toggleDark(el) {
+  function toggleDark(el){
     document.body.classList.toggle("dark", el.checked);
   }
 </script>
